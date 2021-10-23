@@ -7,14 +7,13 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_PASSWORD: password
-      POSTGRES_USER: postgres
       POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
   sql-backend:
     build:
       context: ./sql-backend
       dockerfile: Dockerfile
-    command: npm start
     ports:
       - 3001:3001
     volumes:
@@ -23,12 +22,6 @@ services:
       - postgres
     depends_on: 
       - postgres
-    environment:
-      PGUSER: postgres
-      PGHOST: postgres
-      PGDATABASE: postgres
-      PGPASSWORD: password
-      PGPORT: 5432
   frontend:
     build: ./frontend
     stdin_open: true
@@ -42,4 +35,4 @@ services:
       - PORT=80
       - CHOKIDAR_USEPOLLING=true
     depends_on:
-      - backend
+      - sql-backend

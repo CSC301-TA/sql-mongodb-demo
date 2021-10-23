@@ -6,9 +6,9 @@ public class SQLDao {
 
     private Connection connection;
 
-    private final String uriDb = "jdbc:postgresql://postgres:5432/root";
-    private final String username = "root";
-    private final String password = "123456";
+    private final String uriDb = "jdbc:postgresql://postgres:5432/postgres";
+    private final String username = "postgres";
+    private final String password = "password";
 
     public SQLDao() throws ClassNotFoundException, SQLException {
         Class.forName("org.postgresql.Driver");
