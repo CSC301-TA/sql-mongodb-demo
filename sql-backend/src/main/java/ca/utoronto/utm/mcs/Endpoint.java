@@ -24,7 +24,6 @@ public abstract class Endpoint implements HttpHandler {
     }
 
     public void handle(HttpExchange r) {
-        System.out.println("Request received");
         try {
             switch (r.getRequestMethod()) {
             case "GET":
@@ -67,7 +66,7 @@ public abstract class Endpoint implements HttpHandler {
         this.writeOutputStream(r, response);
     }
 
-    public void sendError(HttpExchange r, int statusCode) throws JSONException, IOException {
+    public void sendStatus(HttpExchange r, int statusCode) throws JSONException, IOException {
         JSONObject res = new JSONObject();
         res.put("status", errorMap.get(statusCode));
         String response = res.toString();

@@ -26,18 +26,8 @@ public class SQLDao {
         return null;
     }
 
-    public ResultSet patchTodo(int id, String title, String description, boolean isChecked) {
-        String query = "UPDATE todos SET title = ?, description = ?, isChecked = ? WHERE todoid = ?";
-        try {
-            PreparedStatement ps = this.connection.prepareStatement(query);
-            ps.setString(1, title);
-            ps.setString(2, description);
-            ps.setBoolean(3, isChecked);
-            ps.setInt(4, id);
-            return ps.executeQuery();
-        } catch (Exception e) {
-            System.out.println("Error occurred");
-        }
+    public ResultSet patchTodo(int id, String title, String description, boolean isChecked) throws SQLException {
+        // TO DO
         return null;
     }
 
@@ -56,14 +46,7 @@ public class SQLDao {
     }
 
     public ResultSet deleteTodo(int id) {
-        String query = "DELETE FROM todos WHERE todoid = ?";
-        try {
-            PreparedStatement ps = this.connection.prepareStatement(query);
-            ps.setInt(1, id);
-            return ps.executeQuery();
-        } catch (Exception e) {
-            System.out.println("Error occurred");
-        }
+        // TO DO
         return null;
     }
 }
