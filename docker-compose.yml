@@ -1,0 +1,45 @@
+version: '3.8'
+services:
+  postgres:
+    build:
+      context: ./sql-database
+      dockerfile: Dockerfile.db
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+  sql-backend:
+    build:
+      context: ./sql-backend
+      dockerfile: Dockerfile
+    command: npm start
+    ports:
+      - 3001:3001
+    volumes:
+      - ./sql-backend:/app/
+    links:
+      - postgres
+    depends_on: 
+      - postgres
+    environment:
+      PGUSER: postgres
+      PGHOST: postgres
+      PGDATABASE: postgres
+      PGPASSWORD: password
+      PGPORT: 5432
+  frontend:
+    build: ./frontend
+    stdin_open: true
+    tty: true
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend:/frontend
+      - /frontend/node_modules
+    environment:
+      - PORT=80
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - backend
