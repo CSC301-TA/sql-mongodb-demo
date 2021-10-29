@@ -108,7 +108,8 @@ const TaskList = ({ tasksList }) => {
                   {task.description}
                 </Task>
               ))}
-            {tasks.length === 0 && <p>No tasks to complete~ 🥳</p>}
+            {!tasks && <p>No tasks to complete~ 🥳</p>}
+            {tasks && tasks.length === 0 && <p>No tasks to complete~ 🥳</p>}
           </Stack>
         </Box>
       </Box>

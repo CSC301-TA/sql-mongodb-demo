@@ -6,12 +6,12 @@ export default function Index() {
   const [tasksList, setTasksList] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/api/todos", {
+    fetch("http://localhost:3001/api/todo", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     })
       .then((res) => res.json())
-      .then((data) => setTasksList(data));
+      .then((data) => setTasksList(data.results));
   }, []);
 
   return (

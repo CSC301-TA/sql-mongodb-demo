@@ -42,7 +42,7 @@ public class Todo extends Endpoint {
                 this.sendStatus(r, 500);
             }
         } else {
-            this.sendStatus(r, 401);
+            this.sendStatus(r, 400);
         }
     }
 

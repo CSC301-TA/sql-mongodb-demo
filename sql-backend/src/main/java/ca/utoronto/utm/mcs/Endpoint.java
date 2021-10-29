@@ -38,8 +38,15 @@ public abstract class Endpoint implements HttpHandler {
             case "DELETE":
                 this.handleDelete(r);
                 break;
-            default:
+            case "OPTIONS":
+                // cors voodoo magic ...
+                r.getResponseHeaders().add("Access-Control-Allow-Methods", "GET, PATCH, POST, DELETE, OPTIONS");
+                r.getResponseHeaders().add("Access-Control-Allow-Headers", "Content-Type,Authorization");
+                r.sendResponseHeaders(204, -1);
                 break;
+            default:
+                System.out.println("Else");
+                break;  
             }
         } catch (Exception e) {
             e.printStackTrace();
