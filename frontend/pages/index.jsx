@@ -11,7 +11,7 @@ export default function Index() {
       headers: { "Content-Type": "application/json" },
     })
       .then((res) => res.json())
-      .then((data) => setTasksList(data.results));
+      .then((data) => setTasksList(data.results || []));
   }, []);
 
   return (
