@@ -1,12 +1,11 @@
-# Full Stack React Demo
+# SQL/MongoDB Demo
 
-This repository contains the starter code for the Full Stack React workshop hosted by CSSC & GDSC
+This repository contains the starter code for a full stack todo list application connects to either the SQL Java API or MongoDB Java API.
 
 ## Installation
 
-TODO
+Requires:
+- Docker
+- Node.js
 
-Authors:
-- Jarrod Servilla
-- Daniel Laufer
-- Milind Vishnoi
+Commands provided in Makefile
