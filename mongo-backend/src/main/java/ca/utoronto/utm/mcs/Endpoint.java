@@ -25,6 +25,7 @@ public abstract class Endpoint implements HttpHandler {
 
     public void handle(HttpExchange r) {
         try {
+            r.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
             switch (r.getRequestMethod()) {
             case "GET":
                 this.handleGet(r);
